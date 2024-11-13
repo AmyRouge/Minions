@@ -1,0 +1,192 @@
+.groupIcon {
+    position: absolute;
+    height: 101.76%;
+    width: 101.25%;
+    top: -0.88%;
+    right: -0.62%;
+    bottom: -0.88%;
+    left: -0.62%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+.welcomeMinions {
+    position: absolute;
+    top: 40px;
+    left: 482px;
+    font-size: 96px;
+    color: #000;
+}
+.menuChild {
+    position: absolute;
+    top: 254px;
+    left: 470px;
+    border-radius: 41px;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 482px;
+    height: 623px;
+}
+.profile {
+    position: absolute;
+    top: 294px;
+    left: 651px;
+    font-size: 64px;
+}
+.minionsIcon {
+    position: absolute;
+    top: 729px;
+    left: 1169px;
+    width: 363px;
+    height: 342px;
+    object-fit: cover;
+}
+.filled {
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 0px;
+    border-radius: 100px;
+    background-color: #007aff;
+    width: 4px;
+    height: 4px;
+}
+.track {
+    position: absolute;
+    width: calc(100% - 32px);
+    top: calc(50% - 2px);
+    right: 16px;
+    left: 16px;
+    background-color: rgba(120, 120, 128, 0.16);
+    height: 4px;
+}
+.progressBar {
+    position: absolute;
+    top: 634px;
+    left: 519px;
+    background-color: #fff;
+    width: 393px;
+    height: 44px;
+}
+.userName {
+    position: absolute;
+    top: 401px;
+    left: 519px;
+}
+.exp {
+    position: absolute;
+    top: 567px;
+    left: 519px;
+}
+.labelText {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-weight: 600;
+}
+.stateLayer {
+    align-self: stretch;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+}
+.logoutButton {
+    position: absolute;
+    top: 729px;
+    left: 571px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff7f4d, #eae256);
+    width: 297px;
+    height: 90px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    color: #1c0024;
+    font-family: Inter;
+}
+.label {
+    align-self: stretch;
+    position: relative;
+    line-height: 140%;
+}
+.value {
+    flex: 1;
+    position: relative;
+    line-height: 140%;
+    z-index: 0;
+}
+.dragIcon {
+    width: 6.6px;
+    position: absolute;
+    margin: 0 !important;
+    right: 5.05px;
+    bottom: 6.05px;
+    height: 6.6px;
+    z-index: 1;
+}
+.textarea {
+    align-self: stretch;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    position: relative;
+    min-width: 240px;
+    min-height: 80px;
+}
+.showusername {
+    position: absolute;
+    top: 439px;
+    left: 516px;
+    width: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    font-size: 16px;
+    color: #1e1e1e;
+    font-family: Inter;
+}
+.profileHomeButton {
+    position: absolute;
+    top: 39px;
+    left: 1273px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    width: 119px;
+    height: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    color: #1c0024;
+    font-family: Inter;
+}
+.menu {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 1024px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 48px;
+    color: #fff;
+    font-family: 'Jolly Lodger';
+}
+

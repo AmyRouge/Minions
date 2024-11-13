@@ -1,0 +1,124 @@
+.groupIcon {
+    position: absolute;
+    height: 101.76%;
+    width: 101.25%;
+    top: -1.27%;
+    right: -0.35%;
+    bottom: -0.49%;
+    left: -0.9%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+}
+.welcomeMinions {
+    position: absolute;
+    top: 176px;
+    left: 243px;
+    font-size: 200px;
+    background: linear-gradient(180deg, #ff6d54, #ffeb0a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: left;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.minionsIcon {
+    position: absolute;
+    top: 729px;
+    left: 1169px;
+    width: 363px;
+    height: 342px;
+    object-fit: cover;
+}
+.minionTransparentBackgroundIcon {
+    position: absolute;
+    top: -167px;
+    left: -111px;
+    width: 515.9px;
+    height: 535.7px;
+    object-fit: contain;
+}
+.unnamedRemovebgPreview1Icon {
+    position: absolute;
+    top: 130px;
+    left: 1089px;
+    width: 219.4px;
+    height: 191.6px;
+    object-fit: contain;
+}
+.homeChild {
+    position: absolute;
+    top: 450px;
+    left: 233px;
+    border-radius: 41px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 973px;
+    height: 264px;
+}
+.illuminationUniversalAndG {
+    position: absolute;
+    top: 484px;
+    left: 260px;
+    font-size: 43px;
+    color: #fff;
+    display: inline-block;
+    width: 919px;
+    height: 196px;
+}
+.labelText {
+    position: relative;
+    letter-spacing: -0.02em;
+    line-height: 120%;
+    font-weight: 600;
+}
+.stateLayer {
+    align-self: stretch;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+}
+.homeSignupButton {
+    position: absolute;
+    top: 40px;
+    left: 1141px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    width: 119px;
+    height: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+}
+.homeGuestButton {
+    position: absolute;
+    top: 39px;
+    left: 1273px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    width: 119px;
+    height: 36px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+}
+.home {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 1024px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 24px;
+    color: #1c0024;
+    font-family: 'Jolly Lodger';
+}
+
