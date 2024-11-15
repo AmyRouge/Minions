@@ -1,107 +1,103 @@
-// src/pages/SignUp.js
+// src/pages/SignUp.jsx
 import React, { useState } from 'react';
-import styles from './SignUp.css';
-import { auth } from '../firebaseConfig';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import '../styles/SignUp.css';
+
+import BackgroundImage from '../assets/background.jpg';
+import MinionIcon from '../assets/minions.png';
 
 const SignUp = () => {
-  const [formData, setFormData] = useState({
-    username: '', // We'll use displayName in Firebase
-    email: '',
-    password: '',
-    confirmPassword: ''
-  });
-  const [errorMessage, setErrorMessage] = useState(null);
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+    const { signup } = useAuth();
+    const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState('');
 
-  // Handle input changes
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setErrorMessage(null); // Reset error message
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrorMessage('');
 
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMessage("Passwords do not match!");
-      return;
-    }
+        if (formData.password !== formData.confirmPassword) {
+            setErrorMessage("Passwords do not match!");
+            return;
+        }
 
-    try {
-      // Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        formData.email,
-        formData.password
-      );
+        try {
+            // Sign up the user and create profile in Firestore
+            await signup(formData.email, formData.password, formData.username);
+            navigate('/game-selection');
+        } catch (error) {
+            setErrorMessage(error.message);
+        }
+    };
 
-      // Update the user's profile with the username
-      await updateProfile(userCredential.user, {
-        displayName: formData.username
-      });
+    return (
+        <div className="signUp">
+            <img className="backgroundImage" alt="Background" src={BackgroundImage} />
+            <div className="welcomeMinions">Welcome Minions</div>
+            <img className="minionIcon" alt="Minion Icon" src={MinionIcon} />
 
-      alert("Signup successful! Please log in.");
-      // Optionally redirect to login page
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  };
+            <div className="formContainer">
+                <h2 className="formTitle">Sign Up</h2>
+                {errorMessage && <p className="error">{errorMessage}</p>}
+                <form onSubmit={handleSubmit}>
+                    <label className="formLabel">User Name</label>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="User Name"
+                        className="inputField"
+                        value={formData.username}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <label className="formLabel">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        className="inputField"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <label className="formLabel">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        className="inputField"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <label className="formLabel">Confirm Password</label>
+                    <input
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        className="inputField"
+                        value={formData.confirmPassword}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <button type="submit" className="signUpButton">Sign Up</button>
+                </form>
+            </div>
 
-  return (
-    <div className={styles.signUp}>
-      {/* Your existing UI components */}
-      <img className={styles.groupIcon} alt="" src="/assets/images/Group.png" />
-      <div className={styles.welcomeMinions}>Welcome Minions</div>
-
-      {/* Display error message if present */}
-      {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
-
-      {/* Input fields with event listeners for capturing user data */}
-      <input
-        type="text"
-        name="username"
-        placeholder="User Name"
-        value={formData.username}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <input
-        type="password"
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        value={formData.confirmPassword}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <button onClick={handleSubmit} className={styles.signupButton}>
-        Sign Up
-      </button>
-
-      {/* Other components like Home button */}
-    </div>
-  );
+            <button className="homeButton" onClick={() => navigate('/')}>Home</button>
+        </div>
+    );
 };
 
 export default SignUp;

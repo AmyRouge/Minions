@@ -1,19 +1,30 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
+import GameSelection from './pages/GameSelection';
+import LogIn from './pages/Login';
+import Result from './pages/Result';
+import PlayerConnect from './pages/PlayerConnect';
 import Profile from './pages/Profile';
+import SignUp from './pages/SignUp';
+import SinglePlayer from './pages/SinglePlayer';
+import TwoPlayer from './pages/TwoPlayer';
+import Menu from './pages/Menu';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/game-selection" element={<GameSelection />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/player-connect" element={<PlayerConnect />} />
         <Route path="/profile" element={<Profile />} />
-        {/* Add other routes here */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/single-player" element={<SinglePlayer />} />
+        <Route path="/two-player" element={<TwoPlayer />} />
       </Routes>
     </Router>
   );

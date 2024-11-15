@@ -1,67 +1,60 @@
-// src/pages/LogIn.js
 import React, { useState } from 'react';
-import styles from './LogIn.module.css';
-import { auth } from '../firebaseConfig';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
 
-const LogIn = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState(null);
+import BackgroundImage from '../assets/background.jpg'; // Replace with your actual background
+import MinionIcon from '../assets/minions.png'; // Replace with your actual minion icon
 
-  // Handle input changes
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  };
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
-  // Handle form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setErrorMessage(null); // Reset error message
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            await login(email, password);
+            navigate('/game-selection');
+        } catch (error) {
+            console.error('Failed to log in', error);
+        }
+    };
 
-    try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      alert("Login successful!");
-      // Optionally redirect to the game or profile page
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  };
+    return (
+        <div className="login">
+            <img className="backgroundImage" alt="Background" src={BackgroundImage} />
+            <div className="welcomeMinions">Welcome Minions</div>
+            <img className="minionIcon" alt="Minion Icon" src={MinionIcon} />
 
-  return (
-    <div className={styles.logIn}>
-      {/* Your existing UI components */}
-      <img className={styles.groupIcon} alt="" src="/assets/images/Group.png" />
-
-      {/* Display error message if present */}
-      {errorMessage && <div className={styles.errorMessage}>{errorMessage}</div>}
-
-      {/* Input fields */}
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleInputChange}
-        className={styles.inputText}
-      />
-
-      <button onClick={handleSubmit} className={styles.loginButton}>
-        Log In
-      </button>
-
-      {/* Other components like Home button */}
-    </div>
-  );
+            <div className="loginContainer">
+                <h1 className="welcomeBack">Welcome Back</h1>
+                <form onSubmit={handleLogin}>
+                    <label className="formLabel">Email</label>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className="inputField"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label className="formLabel">Password</label>
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="inputField"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button type="submit" className="loginButton">Log In</button>
+                    <button type="button" className="signUpButton" onClick={() => navigate('/signup')}>
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
-export default LogIn;
+export default Login;

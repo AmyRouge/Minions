@@ -1,57 +1,51 @@
-import styles from './PlayerConnect.module.css';
-
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/PlayerConnect.css';
+import BackgroundImage from '../assets/background.jpg';
+import MinionIcon from '../assets/minions.png';
 
 const PlayerConnect = () => {
-  	return (
-    		<div className={styles.playerConnect}>
-      			<img className={styles.groupIcon} alt="" src="Group.png" />
-      			<div className={styles.twoPlayers}>Two Players</div>
-      			<div className={styles.playerConnectChild} />
-      			<div className={styles.showusername}>
-        				<div className={styles.textarea}>
-          					<div className={styles.value} />
-          					<img className={styles.dragIcon} alt="" src="Drag.svg" />
-        				</div>
-      			</div>
-      			<div className={styles.inputplayer2}>
-        				<div className={styles.textField}>
-          					<div className={styles.stateLayer}>
-            						<div className={styles.content}>
-              							<div className={styles.inputTextContainer}>
-                								<div className={styles.inputText} />
-              							</div>
-            						</div>
-            						<div className={styles.trailingIcon}>
-              							<div className={styles.container}>
-                								<div className={styles.stateLayer1}>
-                  									<img className={styles.icon} alt="" src="Icon.svg" />
-                								</div>
-              							</div>
-            						</div>
-          					</div>
-        				</div>
-        				<div className={styles.activeIndicator} />
-      			</div>
-      			<div className={styles.profile}>profile</div>
-      			<img className={styles.minionsIcon} alt="" src="minions.png" />
-      			<div className={styles.player1}>Player 1</div>
-      			<div className={styles.player2}>player 2</div>
-      			<div className={styles.playButton}>
-        				<div className={styles.stateLayer2}>
-          					<div className={styles.labelText}>Play</div>
-        				</div>
-      			</div>
-      			<div className={styles.playerHomeButton}>
-        				<div className={styles.stateLayer2}>
-          					<div className={styles.labelText}>Home</div>
-        				</div>
-      			</div>
-      			<div className={styles.playerProfileButton}>
-        				<div className={styles.stateLayer2}>
-          					<div className={styles.labelText}>Profile</div>
-        				</div>
-      			</div>
-    		</div>);
+    const [player2, setPlayer2] = useState('');
+    const navigate = useNavigate();
+
+    const handleStartGame = () => {
+        if (player2.trim()) {
+            navigate('/two-player-game', { state: { player1: 'Player 1', player2 } });
+        } else {
+            alert('Please enter Player 2 name');
+        }
+    };
+
+    return (
+        <div className="playerConnect">
+            <img className="backgroundIcon" alt="Background" src={BackgroundImage} />
+            <h1 className="title">Two Players</h1>
+            <div className="playerConnectContainer">
+                <h2 className="profileTitle">Profile</h2>
+                <label className="playerLabel">Player 1</label>
+                <input
+                    className="inputField"
+                    type="text"
+                    value="Player 1"
+                    readOnly
+                />
+                <label className="playerLabel">Player 2</label>
+                <input
+                    className="inputField"
+                    type="text"
+                    placeholder="Enter Player 2 Name"
+                    value={player2}
+                    onChange={(e) => setPlayer2(e.target.value)}
+                />
+                <button className="playButton" onClick={handleStartGame}>Play</button>
+            </div>
+            <img className="minionIcon" alt="Minion Icon" src={MinionIcon} />
+            <div className="navigationButtons">
+                <button className="homeButton" onClick={() => navigate('/home')}>Home</button>
+                <button className="profileButton" onClick={() => navigate('/profile')}>Profile</button>
+            </div>
+        </div>
+    );
 };
 
 export default PlayerConnect;

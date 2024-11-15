@@ -1,35 +1,52 @@
-import styles from './GameSelection.module.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/GameSelection.css';
 
+import BackgroundImage from '../assets/background.jpg';
+import MinionIcon from '../assets/minions.png';
 
 const GameSelection = () => {
-  	return (
-    		<div className={styles.gameSelection}>
-      			<img className={styles.groupIcon} alt="" src="Group.png" />
-      			<div className={styles.welcomeMinions}>Welcome Minions</div>
-      			<div className={styles.gameSelectionChild} />
-      			<div className={styles.selectPlayer}>Select Player</div>
-      			<img className={styles.minionsIcon} alt="" src="minions.png" />
-      			<div className={styles.multiplayerButton}>
-        				<div className={styles.stateLayer}>
-          					<div className={styles.labelText}>Two Player</div>
-        				</div>
-      			</div>
-      			<div className={styles.singlePlayerButton}>
-        				<div className={styles.stateLayer}>
-          					<div className={styles.labelText}>Single Player</div>
-        				</div>
-      			</div>
-      			<div className={styles.gameHomeButton}>
-        				<div className={styles.stateLayer}>
-          					<div className={styles.labelText}>Home</div>
-        				</div>
-      			</div>
-      			<div className={styles.gameProfileButton}>
-        				<div className={styles.stateLayer}>
-          					<div className={styles.labelText}>Profile</div>
-        				</div>
-      			</div>
-    		</div>);
+    const navigate = useNavigate();
+
+    const handleSinglePlayer = () => {
+        navigate('/single-player');
+    };
+
+    const handleTwoPlayer = () => {
+        navigate('/two-player');
+    };
+
+    const handleGoToProfile = () => {
+        navigate('/profile');
+    };
+
+    const handleGoHome = () => {
+        navigate('/');
+    };
+
+    return (
+        <div className="gameSelection">
+            <img className="backgroundIcon" alt="Background" src={BackgroundImage} />
+            <div className="welcomeMinions">Welcome Minions</div>
+
+            <div className="gameSelectionContainer">
+                <h1 className="selectPlayer">Select Player</h1>
+                <div className="singlePlayerButton" onClick={handleSinglePlayer}>
+                    <span className="labelText">Single Player</span>
+                </div>
+                <div className="twoPlayerButton" onClick={handleTwoPlayer}>
+                    <span className="labelText">Two Player</span>
+                </div>
+            </div>
+
+            <img className="minionIcon" alt="Minion Icon" src={MinionIcon} onClick={handleGoToProfile} />
+
+            <div className="navigationButtonss">
+                <button className="homeButtons" onClick={handleGoHome}>Home</button>
+                <button className="profileButtons" onClick={handleGoToProfile}>Profile</button>
+            </div>
+        </div>
+    );
 };
 
 export default GameSelection;

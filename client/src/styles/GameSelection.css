@@ -1,132 +1,101 @@
-.groupIcon {
-    position: absolute;
-    height: 101.76%;
-    width: 101.25%;
-    top: -0.88%;
-    right: -0.62%;
-    bottom: -0.88%;
-    left: -0.62%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-    object-fit: cover;
-}
-.welcomeMinions {
-    position: absolute;
-    top: 40px;
-    left: 491px;
-    font-size: 96px;
-    font-family: 'Jolly Lodger';
-    color: #000;
-    text-align: left;
-}
-.gameSelectionChild {
-    position: absolute;
-    top: 275px;
-    left: 233px;
-    border-radius: 41px;
-    background-color: rgba(0, 0, 0, 0.75);
-    width: 973px;
-    height: 563px;
-}
-.selectPlayer {
-    position: absolute;
-    top: 301px;
-    left: 535px;
-    font-size: 96px;
-    font-family: 'Jolly Lodger';
-    color: #fff;
-    text-align: left;
-}
-.minionsIcon {
-    position: absolute;
-    top: 729px;
-    left: 1169px;
-    width: 363px;
-    height: 342px;
-    object-fit: cover;
-}
-.labelText {
-    position: relative;
-    letter-spacing: -0.02em;
-    line-height: 120%;
-    font-weight: 600;
-}
-.stateLayer {
-    align-self: stretch;
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 24px;
-}
-.multiplayerButton {
-    position: absolute;
-    top: 654px;
-    left: 571px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #ff7f4d, #eae256);
-    width: 297px;
-    height: 90px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #0c0010;
-}
-.singlePlayerButton {
-    position: absolute;
-    top: 504px;
-    left: 571px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #ff7f4d, #eae256);
-    width: 297px;
-    height: 90px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.gameHomeButton {
-    position: absolute;
-    top: 40px;
-    left: 1141px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #ff6c6c, #ffae00);
-    width: 119px;
-    height: 36px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.gameProfileButton {
-    position: absolute;
-    top: 39px;
-    left: 1273px;
-    border-radius: 100px;
-    background: linear-gradient(90deg, #ff6c6c, #ffae00);
-    width: 119px;
-    height: 36px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 .gameSelection {
-    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Jolly Lodger', cursive;
     position: relative;
-    background-color: #fff;
-    height: 1024px;
     overflow: hidden;
-    text-align: center;
-    font-size: 24px;
-    color: #1c0024;
-    font-family: Inter;
 }
 
+.backgroundIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.welcomeMinions {
+    position: absolute;
+    top: 20px;
+    font-size: 80px;
+    color: #000;
+    font-family: 'Jolly Lodger', cursive;
+}
+
+.minionIcon {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+    cursor: pointer;
+}
+
+.gameSelectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+    font-family: 'Jolly Lodger', sans-serif;
+}
+
+.selectPlayer {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Jolly Lodger', sans-serif;
+}
+
+.singlePlayerButton,
+.twoPlayerButton {
+    margin: 15px 0;
+    width: 250px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff7f4d, #eae256);
+    cursor: pointer;
+    font-size: 28px;
+    color: #0c0010;
+    transition: background 0.3s ease;
+}
+
+.singlePlayerButton:hover,
+.twoPlayerButton:hover {
+    background: linear-gradient(90deg, #eae256, #ff7f4d);
+}
+
+.navigationButtonss {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.homeButtons,
+.profileButtons {
+    width: 80px;
+    height: 30px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    color: #1c0024;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: none;
+}
+
+.homeButtons:hover,
+.profileButtons:hover {
+    background: linear-gradient(90deg, #ffae00, #ff6c6c);
+}

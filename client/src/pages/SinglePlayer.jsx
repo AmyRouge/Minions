@@ -1,49 +1,69 @@
-import styles from './SinglePlayer.module.css';
-
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/SinglePlayer.css';
+import BackgroundImage from '../assets/background.jpg';
+import MinionIcon from '../assets/minions.png';
 
 const SinglePlayer = () => {
-  	return (
-    		<div className={styles.singlePlayer}>
-      			<img className={styles.groupIcon} alt="" src="Group.png" />
-      			<div className={styles.singlePlayer1}>Single Player</div>
-      			<img className={styles.singlePlayerChild} alt="" src="Rectangle 4.svg" />
-      			<div className={styles.div}>1:50</div>
-      			<div className={styles.progressBar}>
-        				<div className={styles.track}>
-          					<div className={styles.filled} />
-        				</div>
-      			</div>
-      			<div className={styles.inputplayer2}>
-        				<div className={styles.textField}>
-          					<div className={styles.stateLayer}>
-            						<div className={styles.content}>
-              							<div className={styles.inputTextContainer}>
-                								<div className={styles.inputText} />
-              							</div>
-            						</div>
-            						<div className={styles.trailingIcon}>
-              							<div className={styles.container}>
-                								<div className={styles.stateLayer1}>
-                  									<img className={styles.icon} alt="" src="Icon.svg" />
-                								</div>
-              							</div>
-            						</div>
-          					</div>
-        				</div>
-        				<div className={styles.activeIndicator} />
-      			</div>
-      			<div className={styles.whoIsThe}>Who is the Minion :</div>
-      			<div className={styles.singleplayerHomeButton}>
-        				<div className={styles.stateLayer2}>
-          					<div className={styles.labelText}>Home</div>
-        				</div>
-      			</div>
-      			<div className={styles.singleplayerProfileButton}>
-        				<div className={styles.stateLayer2}>
-          					<div className={styles.labelText}>Profile</div>
-        				</div>
-      			</div>
-    		</div>);
+    const [answer, setAnswer] = useState('');
+    const [timeLeft, setTimeLeft] = useState(60); // 60 seconds timer
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (timeLeft === 0) {
+            alert("Time's up!");
+            // Handle timeout logic here
+            return;
+        }
+        const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
+        return () => clearInterval(timer);
+    }, [timeLeft]);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Answer submitted:', answer);
+        // Add game logic here for validating the answer
+    };
+
+    const handleGoToProfile = () => {
+        navigate('/profile');
+    };
+
+    const handleGoToGameSelection = () => {
+        navigate('/game-selection');
+    };
+
+    const timePercentage = (timeLeft / 60) * 100;
+
+    return (
+        <div className="singlePlayer">
+            <img className="backgroundIcon" alt="Background" src={BackgroundImage} />
+            <div className="topBar">
+                <button className="homeButton" onClick={handleGoToGameSelection}>Home</button>
+            </div>
+            <h2 className="gameTitle">Single Player</h2>
+            <div className="gameArea">
+                <img className="minionIcon" alt="Minion Icon" src={MinionIcon} onClick={handleGoToProfile} />
+                <div className="timerContainer">
+                    <div className="timerBar" style={{ width: `${timePercentage}%` }}>
+                        {timeLeft}s
+                    </div>
+                </div>
+                <form onSubmit={handleSubmit} className="answerSection">
+                    <label htmlFor="answer" className="answerLabel">Answer:</label>
+                    <input
+                        id="answer"
+                        type="text"
+                        value={answer}
+                        onChange={(e) => setAnswer(e.target.value)}
+                        placeholder="Your Answer"
+                        className="answerInput"
+                    />
+                    <button type="submit" className="submitButton">Submit</button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default SinglePlayer;
