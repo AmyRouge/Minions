@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/GameSelection.css';
 
@@ -7,6 +7,7 @@ import MinionIcon from '../assets/minions.png';
 
 const GameSelection = () => {
     const navigate = useNavigate();
+    const [showInstructions, setShowInstructions] = useState(false);
 
     const handleSinglePlayer = () => {
         navigate('/single-player');
@@ -24,6 +25,10 @@ const GameSelection = () => {
         navigate('/');
     };
 
+    const toggleInstructions = () => {
+        setShowInstructions((prev) => !prev);
+    };
+
     return (
         <div className="gameSelection">
             <img className="backgroundIcon" alt="Background" src={BackgroundImage} />
@@ -39,12 +44,24 @@ const GameSelection = () => {
                 </div>
             </div>
 
-            <img className="minionIcon" alt="Minion Icon" src={MinionIcon} onClick={handleGoToProfile} />
+            <img
+                className="topLeftMinionIcon"
+                alt="Minion Icon"
+                src={MinionIcon}
+                onClick={handleGoToProfile}
+            />
 
-            <div className="navigationButtonss">
-                <button className="homeButtons" onClick={handleGoHome}>Home</button>
-                <button className="profileButtons" onClick={handleGoToProfile}>Profile</button>
+            <div className="navigationButtons">
+                <button className="instructionsButton" onClick={toggleInstructions}>Instructions</button>
             </div>
+
+            {showInstructions && (
+                <div className="instructionsPopup">
+                    <h2>Game Instructions</h2>
+                    <p>In Single Player mode, answer questions correctly to earn XP. In Two Player mode, compete with a friend to see who scores higher!</p>
+                    <button className="closeButton" onClick={toggleInstructions}>Close</button>
+                </div>
+            )}
         </div>
     );
 };

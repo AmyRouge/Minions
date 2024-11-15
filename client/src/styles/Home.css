@@ -24,7 +24,7 @@
 .welcomeMinionss {
     font-size: 96px;
     color: #ffc20a;
-    margin-top: 40px;
+    margin-top: -150px;
     font-family: 'Jolly Lodger', sans-serif;
 }
 
@@ -42,18 +42,21 @@
     margin-bottom: 20px;
 }
 
-.descriptionText {
+.descriptContainer{
     max-width: 800px;
-    font-size: 24px;
-    color: white;
     background: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 20px;
+}
+.descriptionText {
+    font-size: 28px;
+    color: white;
 }
 
 .signupButton, .guestButton {
     font-size: 24px;
     margin: 10px;
+    width: 180px;
     padding: 10px 20px;
     border: none;
     border-radius: 20px;

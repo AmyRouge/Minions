@@ -25,7 +25,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    left: 150px;
+    left: 10px;
 }
 
 .homeButton {
@@ -41,7 +41,7 @@
 /* Game Title */
 .gameTitle {
     position: absolute;
-    top: 35px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 48px;
@@ -52,18 +52,19 @@
 /* Game Area */
 .gameArea {
     position: absolute;
-    top: 50px;
+    top: 10px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
     max-width: 800px;
-    height: 600px;
+    height: 650px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
 }
 
 /* Minion Icon */
@@ -82,10 +83,9 @@
     height: 40px;
     background-color: #e6e0e9;
     border-radius: 20px;
-    margin: 20px 0;
+    margin-top: 50px;
     position: relative;
     overflow: hidden;
-    top: 50px;
 }
 
 /* Timer Bar */
@@ -102,12 +102,23 @@
     transition: width 1s linear;
 }
 
+/* Question Image */
+.questionImage {
+    max-width: 90%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
 /* Answer Section */
 .answerSection {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 20px;
+    width: 90%;
+    margin-top: 15px;
 }
 
 .answerLabel {
@@ -140,4 +151,27 @@
 
 .submitButton:hover {
     background: linear-gradient(90deg, #ffae00, #ff5e00);
+}
+
+/* Feedback */
+.feedback {
+    font-size: 18px;
+    color: #fff;
+    font-family: 'Metal Mania', cursive;
+    margin-top: 5px;
+}
+
+/* Progress and Score Container */
+.progressContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 10px 20px;
+    font-family: 'Metal Mania', cursive;
+    margin-top: -50px;
+}
+
+.progress, .score {
+    font-size: 16px;
+    color: #fff;
 }

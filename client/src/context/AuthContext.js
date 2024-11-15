@@ -28,17 +28,21 @@ export const AuthProvider = ({ children }) => {
 
     // Sign up function with Firestore profile creation
     const signup = async (email, password, username) => {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-        
-        // Create user profile in Firestore
-        await setDoc(doc(db, 'users', user.uid), {
-            username: username,
-            xp: 0,
-            league: getLeague(0),  // Starts in the first league
-        });
-
-        return user;
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+    
+            await setDoc(doc(db, 'users', user.uid), {
+                username: username,
+                xp: 0,
+                league: getLeague(0),
+            });
+    
+            return user;
+        } catch (error) {
+            console.error("Error during signup:", error);
+            throw error; // Propagate the error to the UI for feedback
+        }
     };
 
     // Login function

@@ -21,6 +21,7 @@
     font-size: 96px;
     color: #000;
     margin-top: 40px;
+    left: 32%;
     font-family: 'Jolly Lodger', sans-serif;
 }
 
@@ -70,20 +71,33 @@
     padding: 15px;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     background: linear-gradient(90deg, #ff7f4d, #eae256);
     color: #1c0024;
     cursor: pointer;
 }
 
-.signUpButton {
+.signUpButtonx {
     margin-top: 15px;
     width: 100%;
     padding: 15px;
     font-size: 18px;
     border: none;
-    border-radius: 5px;
-    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    border-radius: 20px;
+    background: linear-gradient(90deg, #ff7f4d, #eae256);
     color: #1c0024;
     cursor: pointer;
 }
+
+.loginButton:hover,
+.signUpButtonx:hover {
+    background: linear-gradient(90deg, #ffae00, #ff6c6c);
+}
+
+.error {
+    color: #ff6c6c;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+

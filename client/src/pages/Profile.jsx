@@ -1,9 +1,8 @@
-// src/pages/Profile.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase'; // Changed firestore to db
+import { db } from '../firebase';
 import '../styles/Profile.css';
 
 import BackgroundImage from '../assets/background.jpg';
@@ -11,7 +10,7 @@ import MinionIcon from '../assets/minions.png';
 
 const Profile = () => {
     const navigate = useNavigate();
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth();
     const [profileData, setProfileData] = useState({
         username: '',
         league: '',
@@ -23,7 +22,7 @@ const Profile = () => {
         const fetchUserProfile = async () => {
             if (currentUser) {
                 try {
-                    const userDoc = await getDoc(doc(db, 'users', currentUser.uid)); // Changed firestore to db
+                    const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
                     if (userDoc.exists()) {
                         setProfileData({
                             username: userDoc.data().username,
@@ -43,7 +42,12 @@ const Profile = () => {
         fetchUserProfile();
     }, [currentUser]);
 
-    const handleGoToHome = () => {
+    const handleLogout = async () => {
+        await logout();
+        navigate('/');
+    };
+
+    const handleGoToGameSelection = () => {
         navigate('/game-selection');
     };
 
@@ -85,8 +89,10 @@ const Profile = () => {
                         readOnly
                     />
                 </form>
+                {/* Move buttons inside the black container */}
+                <button className="homeButtons" onClick={handleGoToGameSelection}>Home</button>
+                <button className="logoutButtons" onClick={handleLogout}>Logout</button>
             </div>
-            <button className="homeButton" onClick={handleGoToHome}>Home</button>
             <img className="minionIcon" alt="Minion Icon" src={MinionIcon} />
         </div>
     );

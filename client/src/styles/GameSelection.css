@@ -82,10 +82,9 @@
     gap: 10px;
 }
 
-.homeButtons,
-.profileButtons {
-    width: 80px;
-    height: 30px;
+.instructionsButton {
+    width: 120px;
+    height: 40px;
     border-radius: 100px;
     background: linear-gradient(90deg, #ff6c6c, #ffae00);
     color: #1c0024;
@@ -95,7 +94,52 @@
     border: none;
 }
 
-.homeButtons:hover,
-.profileButtons:hover {
+.instructionsButton:hover {
     background: linear-gradient(90deg, #ffae00, #ff6c6c);
 }
+
+/* Top-left Minion Icon */
+.topLeftMinionIcon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 80px;
+    cursor: pointer;
+}
+
+/* Instructions Popup */
+.instructionsPopup {
+    position: absolute;
+    top: 35%;
+    left: 87%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    width: 300px;
+    text-align: center;
+    z-index: 10;
+}
+
+.instructionsPopup h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.instructionsPopup p {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.closeButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Metal Mania', cursive;
+    background: linear-gradient(90deg, #ff6c6c, #ffae00);
+    color: #1c0024;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+

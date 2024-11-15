@@ -10,21 +10,65 @@ import Profile from './pages/Profile';
 import SignUp from './pages/SignUp';
 import SinglePlayer from './pages/SinglePlayer';
 import TwoPlayer from './pages/TwoPlayer';
-import Menu from './pages/Menu';
+import ProtectedRoute from './components/ProtectedRoute'; 
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/game-selection" element={<GameSelection />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/result" element={<Result />} />
-        <Route path="/player-connect" element={<PlayerConnect />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/single-player" element={<SinglePlayer />} />
-        <Route path="/two-player" element={<TwoPlayer />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/game-selection"
+          element={
+            <ProtectedRoute>
+              <GameSelection />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/result"
+          element={
+            <ProtectedRoute>
+              <Result />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/player-connect"
+          element={
+            <ProtectedRoute>
+              <PlayerConnect />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/single-player"
+          element={
+            <ProtectedRoute>
+              <SinglePlayer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/two-player"
+          element={
+            <ProtectedRoute>
+              <TwoPlayer />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
